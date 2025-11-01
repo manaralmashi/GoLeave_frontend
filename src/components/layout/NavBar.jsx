@@ -1,20 +1,15 @@
 // ------------------------------ FOR TEST ------------------------------
 import React from 'react';
 import { Link } from 'react-router';
-import { clearTokens } from '../../lib/auth';
+import LogoutButton from '../auth/LogoutButton';
 
 function NavBar({ user, setUser }) {
-
-  const handleLogout = () => {
-    clearTokens();
-    setUser(null);
-  };
 
   return (
     <nav className="bg-blue-600 text-white">
       <div>
         <Link to="/">🏢 GoLeave</Link>
-        <button onClick={handleLogout}>❌Logout❌</button>
+        <LogoutButton setUser={setUser} />
         <div>
           {user ? (
             <>
