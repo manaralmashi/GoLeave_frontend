@@ -15,10 +15,10 @@ export default function Login({ setUser }) {
       const res = await axios.post("http://127.0.0.1:8000/api/login/", { username, password })
       saveTokens(res.data.access, res.data.refresh)
 
-      const user_detail = await getUserDetail();
-      console.log('✅ Login successful, user detail:', user_detail);
+      const userDetail = await getUserDetail();
+      console.log('✅ Login successful, user detail:', userDetail);
 
-      setUser(user_detail)
+      setUser(userDetail)
       navigate("/")
     } catch (err) {
       console.error(err)
