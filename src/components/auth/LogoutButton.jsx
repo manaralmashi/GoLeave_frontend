@@ -12,7 +12,7 @@ function LogoutButton({setUser}) {
     }
 
   return (
-    <button class='text-red-400' onClick={handleLogOut}>❌Logout❌</button>
+    <button className='px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg' onClick={handleLogOut}>❌Logout❌</button>
   )
 }
 

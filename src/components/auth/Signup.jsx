@@ -14,7 +14,7 @@ export default function SignUp() {
         // Employee model fields
         job_title: '',
         department: '',
-        role: 'employee',
+        role: '',
         hire_date: ''
     });
     const navigate = useNavigate()
@@ -71,30 +71,30 @@ export default function SignUp() {
                 <div>
                     <label>Department</label>
                     <select name='department' value={formData.department} onChange={handleChange} required>
-                        <option value="">Select Department</option>
-                        <option value="HR">Human Resources</option>
-                        <option value="MKT">Marketing</option>
-                        <option value="R&D">Research & Development</option>
-                        <option value="SALES">Sales</option>
-                        <option value="FIN">Finance</option>
-                        <option value="IT">Information Technology</option>
-                        <option value="ADMIN">Administration</option>
-                        <option value="CS">Customer Service</option>
-                        <option value="ACC">Accounting</option>
-                        <option value="QA">Quality Assurance</option>
-                        <option value="MNT">Maintenance</option>
-                        <option value="BIZ">Business</option>
-                        <option value="DES">Designing</option>
-                        <option value="LEAD">Leadership</option>
-                        <option value="LEGAL">Legal</option>
-                        <option value="OTHER">Other</option>
+                        <option value=''>Select Department</option>
+                        <option value='HR'>Human Resources</option>
+                        <option value='MKT'>Marketing</option>
+                        <option value='R&D'>Research & Development</option>
+                        <option value='SALES'>Sales</option>
+                        <option value='FIN'>Finance</option>
+                        <option value='IT'>Information Technology</option>
+                        <option value='ADMIN'>Administration</option>
+                        <option value='CS'>Customer Service</option>
+                        <option value='ACC'>Accounting</option>
+                        <option value='QA'>Quality Assurance</option>
+                        <option value='MNT'>Maintenance</option>
+                        <option value='BIZ'>Business</option>
+                        <option value='DES'>Designing</option>
+                        <option value='LEAD'>Leadership</option>
+                        <option value='LEGAL'>Legal</option>
+                        <option value='OTHER'>Other</option>
                     </select>
                 </div>
                 <div>
                     <label>Role</label>
                     <select name='role' value={formData.role} onChange={handleChange} required>
-                        <option value="employee">Employee</option>
-                        <option value="admin">Admin</option>
+                        <option value='employee'>Employee</option>
+                        <option value='admin'>Admin</option>
                     </select>
                 </div>
                 <div>
@@ -108,7 +108,7 @@ export default function SignUp() {
 
             {/* Login if u have an account */}
             <div>
-                <Link to="/login" className="bg-blue-500 text-white">Do you have account? Login</Link>
+                <Link to='/login' className='bg-blue-500 text-white'>Do you have account? Login</Link>
             </div>
         </div>
     )

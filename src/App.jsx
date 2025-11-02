@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router'
 
 import NavBar from './components/layout/NavBar';
 import Home from './components/Home';
+import Layout from './components/layout/Layout';
 
 import Login from './components/auth/Login'
 import SignUp from './components/auth/Signup';
@@ -52,16 +53,25 @@ function App() {
 
   return (
     <Router>
-      {/* Nav bar takes the user and the set user to show either login or logout buttons */}
-      <NavBar user={user} setUser={setUser}/>
-
       <Routes>
         {/* All our routable components go here */}
-        <Route path='/' element={<Home />}/>
-        <Route path='/login' element={<Login setUser={setUser}/>} />
-        <Route path='/signup' element={<SignUp />} />
-
-      </Routes>
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/signup" element={<SignUp />} />
+        
+        <Route path="/*" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
+              <Routes>
+                {/* <Route path="/" element={<Dashboard user={user} />} /> */} {/* ------> NOT FINISHED IT YET! */}
+                <Route path="/leave-requests" element={<div>test leave requests</div>} />
+                <Route path="/leave-balance" element={<div>test leave balance</div>} />
+                <Route path="/employees" element={<div>test employees</div>} />
+                <Route path="/profile" element={<div>test profile</div>} />
+              </Routes>
+            </Layout>
+          </ProtectedRoute>
+        } />
+      </Routes >
     </Router>
   )
 }
