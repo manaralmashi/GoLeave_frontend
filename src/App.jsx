@@ -3,9 +3,11 @@ import axios from 'axios'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
 
-import NavBar from './components/layout/NavBar';
 import Home from './components/Home';
 import Layout from './components/layout/Layout';
+import EmployeeList from './components/pages/EmployeeList';
+import EmployeeDetail from './components/pages/EmployeeDetail';
+import EmployeeForm from './components/pages/EmployeeForm';
 
 import Login from './components/auth/Login'
 import SignUp from './components/auth/Signup';
@@ -52,26 +54,69 @@ function App() {
   }
 
   return (
+    // <Router>
+    //   <Routes>
+    //     {/* All our routable components go here */}
+    //     <Route path="/login" element={<Login setUser={setUser} />} />
+    //     <Route path="/signup" element={<SignUp />} />
+        
+    //     <Route path="/*" element={
+    //       <ProtectedRoute>
+    //         <Layout user={user} setUser={setUser}>
+    //           <Routes>
+    //             {/* <Route path="/" element={<Dashboard user={user} />} /> */} {/* ------> NOT FINISHED IT YET! */}
+    //             <Route path="/leave-requests" element={<div>test leave requests</div>} />
+    //             <Route path="/leave-balance" element={<div>test leave balance</div>} />
+    //             <Route path="/employees" element={<div>test employees</div>} />
+    //             <Route path="/profile" element={<div>test profile</div>} />
+    //           </Routes>
+    //         </Layout>
+    //       </ProtectedRoute>
+    //     } />
+    //   </Routes >
+    // </Router>
+
     <Router>
       <Routes>
         {/* All our routable components go here */}
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/signup" element={<SignUp />} />
         
-        <Route path="/*" element={
+        {/* Protected Routes */}
+        <Route path="/" element={
           <ProtectedRoute>
-            <Layout user={user} setUser={setUser}>
-              <Routes>
-                {/* <Route path="/" element={<Dashboard user={user} />} /> */} {/* ------> NOT FINISHED IT YET! */}
-                <Route path="/leave-requests" element={<div>test leave requests</div>} />
-                <Route path="/leave-balance" element={<div>test leave balance</div>} />
-                <Route path="/employees" element={<div>test employees</div>} />
-                <Route path="/profile" element={<div>test profile</div>} />
-              </Routes>
+            <Layout>
+              <Home />
+              <EmployeeList />
             </Layout>
           </ProtectedRoute>
         } />
-      </Routes >
+        
+        <Route path='/employees' element={
+          <ProtectedRoute>
+            <EmployeeList />
+            <EmployeeForm />
+          </ProtectedRoute>
+        }/>
+
+        <Route path='/employees/:employeeId' element={
+          <ProtectedRoute>
+            <EmployeeDetail />
+          </ProtectedRoute>
+        }/>
+
+        <Route path='/employees/:employeeId/edit' element={
+          <ProtectedRoute>
+            <EmployeeForm />
+          </ProtectedRoute>
+        }/>
+
+        {/* <Route path='/employees/new' element={
+          <ProtectedRoute>
+            <EmployeeForm />
+          </ProtectedRoute>
+        }/> */}
+      </Routes>
     </Router>
   )
 }
