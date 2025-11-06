@@ -1,16 +1,46 @@
-# React + Vite
+# GoLeave Frontend
+## 🏢 Capstone Project: Leave Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📘 Project Description
+**GoLeave** is a web-based **Leave Management System** that helps organizations manage employee leave requests efficiently.  
+It provides an intuitive interface for employees to request leaves and for admins to manage and track them in real time.  
 
-Currently, two official plugins are available:
+This repository contains the **frontend part** of the project, which focuses on creating a clean and responsive user interface for both employees and administrators.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔗 Backend Repository
+➡️ [GoLeave Backend](https://github.com/manaralmashi/GoLeave_backend)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔷 Features
+- Employee dashboard to submit leave requests and view leave balances.  
+- Admin dashboard to manage employees and leave requests.  
+- Full CRUD functionality for managing employees and leave requests.  
+- Dynamic status updates for requests (Pending, Approved, Rejected).  
+- Real-time UI feedback and error handling.  
+- Responsive layout using **Tailwind CSS**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔷 Tech Stack
+- **React.js** – Frontend framework  
+- **Tailwind CSS** – Styling and layout  
+- **Axios** – API communication  
+- **Vite** – Development and build tool  
+
+---
+
+## 🔷 IceBox Features (Future Enhancements)
+**In the short term:**
+- Apply **CRUD operations** to all models through the admin panel.  
+- Add **updated and detailed leave balances** for all leave types and exceptions.  
+- Add **interactive components** like a calendar to display each employee’s leave period.
+
+**In the long term:**
+- Expand the system to include **Human Resources management**, then **Finance management**, and later evolve into a full **ERP system**.  
+- Integrate **Artificial Intelligence** to improve performance and user experience.
+
+---
+
+## 💻 Author
+Developed by **(Manar Al Mashi)**
