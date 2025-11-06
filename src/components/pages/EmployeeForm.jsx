@@ -4,6 +4,38 @@ import { useNavigate, useParams } from 'react-router'
 import { authRequest } from '../../lib/auth'
 
 function EmployeeForm() {
+    // const [formData, setFormData] = useState({
+    //     // User model fields
+    //     username: '',
+    //     password: '',
+    //     email: '',
+    //     first_name: '',
+    //     last_name: '',
+    //     // Employee model fields
+    //     job_title: '',
+    //     department: '',
+    //     role: 'employee',
+    //     hire_date: ''
+    // });
+
+    // const navigate = useNavigate()
+
+    // const handleChange = (event) => {
+    //     setFormData({ ...formData, [event.target.name]: event.target.value })
+    // };
+
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault()
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/api/signup/', formData)
+    //         console.log('✅ Signup successful:', response.data);
+    //         navigate('/login')
+
+    //     } catch (err) {
+    //         console.error('❌ Signup error:', err);
+    //         alert('Signup failed')
+    //     }
+    // }
     const navigate = useNavigate()
     const { employeeId } = useParams()
     
@@ -80,7 +112,7 @@ function EmployeeForm() {
                 // Create new employee
                 response = await authRequest({
                     method: 'POST',
-                    url: 'http://127.0.0.1:8000/api/employees/',
+                    url: 'http://127.0.0.1:8000/api/signup/',
                     data: formData
                 })
             }
