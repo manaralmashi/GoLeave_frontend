@@ -8,6 +8,10 @@ import Layout from './components/layout/Layout';
 import EmployeeList from './components/pages/EmployeeList';
 import EmployeeDetail from './components/pages/EmployeeDetail';
 import EmployeeForm from './components/pages/EmployeeForm';
+import LeaveRequestList from './components/pages/LeaveRequestList';
+import LeaveRequestForm from './components/pages/LeaveRequestForm';
+import LeaveRequestDetail from './components/pages/LeaveRequestDetail';
+import Profile from './components/pages/Profile';
 
 import Login from './components/auth/Login'
 import SignUp from './components/auth/Signup';
@@ -28,6 +32,7 @@ function App() {
 
         // Get all user detail from API
         const tokenUser = getUserFromToken();
+        console.log('👤 User role from token:', user)
         if (tokenUser) {
           const userDetail = await getUserDetail();
           console.log('👤 User detail:', userDetail);
@@ -54,28 +59,6 @@ function App() {
   }
 
   return (
-    // <Router>
-    //   <Routes>
-    //     {/* All our routable components go here */}
-    //     <Route path="/login" element={<Login setUser={setUser} />} />
-    //     <Route path="/signup" element={<SignUp />} />
-        
-    //     <Route path="/*" element={
-    //       <ProtectedRoute>
-    //         <Layout user={user} setUser={setUser}>
-    //           <Routes>
-    //             {/* <Route path="/" element={<Dashboard user={user} />} /> */} {/* ------> NOT FINISHED IT YET! */}
-    //             <Route path="/leave-requests" element={<div>test leave requests</div>} />
-    //             <Route path="/leave-balance" element={<div>test leave balance</div>} />
-    //             <Route path="/employees" element={<div>test employees</div>} />
-    //             <Route path="/profile" element={<div>test profile</div>} />
-    //           </Routes>
-    //         </Layout>
-    //       </ProtectedRoute>
-    //     } />
-    //   </Routes >
-    // </Router>
-
     <Router>
       <Routes>
         {/* All our routable components go here */}
@@ -85,37 +68,84 @@ function App() {
         {/* Protected Routes */}
         <Route path="/" element={
           <ProtectedRoute>
-            <Layout>
-              <Home />
+            <Layout user={user} setUser={setUser}>
+              <Home user={user}/>
+            </Layout>
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/employees" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
               <EmployeeList />
             </Layout>
           </ProtectedRoute>
         } />
         
-        <Route path='/employees' element={
+        <Route path="/employees/new" element={
           <ProtectedRoute>
-            <EmployeeList />
-            <EmployeeForm />
+            <Layout user={user} setUser={setUser}>
+              <EmployeeForm />
+            </Layout>
           </ProtectedRoute>
-        }/>
+        } />
 
         <Route path='/employees/:employeeId' element={
           <ProtectedRoute>
-            <EmployeeDetail />
+            <Layout user={user} setUser={setUser}>
+              <EmployeeDetail />
+            </Layout>
           </ProtectedRoute>
         }/>
 
         <Route path='/employees/:employeeId/edit' element={
           <ProtectedRoute>
-            <EmployeeForm />
+            <Layout user={user} setUser={setUser}>
+              <EmployeeForm />
+            </Layout>
           </ProtectedRoute>
         }/>
 
-        {/* <Route path='/employees/new' element={
+        <Route path="/leave-requests" element={
           <ProtectedRoute>
-            <EmployeeForm />
+            <Layout user={user} setUser={setUser}>
+              <LeaveRequestList />
+            </Layout>
           </ProtectedRoute>
-        }/> */}
+        } />
+        
+        <Route path="/leave-requests/new" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
+              <LeaveRequestForm />
+            </Layout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/leave-requests/:leaveRequestsId/edit" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
+              <LeaveRequestForm />
+            </Layout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/leave-requests/:leaveRequestsId" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
+              <LeaveRequestDetail />
+            </Layout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Layout user={user} setUser={setUser}>
+              <Profile />
+            </Layout>
+          </ProtectedRoute>
+        } />
+
       </Routes>
     </Router>
   )
